@@ -1,0 +1,6 @@
+FROM logstash:6.6.1
+COPY pipeline/ /usr/share/logstash/pipeline
+COPY config/logstash.yml /usr/share/logstash/config/logstash.yml
+CMD logstash -f /usr/share/logstash/pipeline/logstash.conf
+
+

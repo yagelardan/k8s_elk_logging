@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: elasticsearch
+  labels:
+    app: elasticsearch
+spec:
+  containers:
+  - name: elasticsearch
+    image: yageldhn/els-java8:6.6.1
+    volumeMounts:
+    - mountPath: "/usr/share/elasticsearch/data/"
+      name: elsdata
+    ports:
+    - containerPort: 9200
+    - containerPort: 9300
+    env:
+    - name: discovery.type
+      value: "single-node"
+  volumes:
+  - name: elsdata
+    persistentVolumeClaim:
+      claimName: elsclaim

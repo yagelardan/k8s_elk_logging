@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logstash
+  labels:
+    app: logstash
+spec:
+  containers:
+  - name: logstash
+    image: yageldhn/custom_logstash_k8s:latest
+    env:
+    - name: ELS_HOST
+      value: "elasticsearch-service:9200"
+    ports:
+    - containerPort: 9500
+    - containerPort: 5044

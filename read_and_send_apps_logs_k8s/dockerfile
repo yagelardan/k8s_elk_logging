@@ -1,0 +1,11 @@
+FROM centos:7
+USER root
+ENV LOGSTASH_PORT=9500
+ENV LOGSTASH_HOST="localhost"
+RUN yum clean all & yum install -y docker telnet
+WORKDIR /home/
+#RUN touch log.out
+COPY ./entrypoint.sh /home
+RUN chmod +x /home/entrypoint.sh
+ENTRYPOINT ["/home/entrypoint.sh"]
+

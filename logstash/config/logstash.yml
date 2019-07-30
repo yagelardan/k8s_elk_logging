@@ -1,0 +1,3 @@
+xpack.monitoring.enabled: false
+#xpack.monitoring.elasticsearch.url: http://localhost:9200
+xpack.monitoring.elasticsearch.url: elasticsearch-service:9200 # FOR K8S

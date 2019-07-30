@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: website-service
+spec:
+  ports:
+  - port: 5000
+    targetPort: 80
+    protocol: TCP
+    name: serving
+  - port: 80
+    targetPort: 9200
+    protocol: TCP
+    name: readfromelasticsearch
+  selector:
+    app: website

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+spec:
+  ports:
+  containers:
+  - name: kibana
+    image: docker.elastic.co/kibana/kibana:6.6.1
+    env:
+      - name: ELASTICSEARCH_URL
+        value: "http://elasticsearch-service:9200"
+      - name: ELASTICSEARCH_PORT
+        value: "9200"
+      - name: SERVER_BASEPATH
+        value: /api/v1/namespaces/default/services/kibana-service:serving/proxy
+      - name: SERVER_HOST
+        value: "0.0.0.0"
+
